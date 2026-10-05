@@ -389,7 +389,7 @@ if(guest){
     const yes = attend.value === 'si';
     if(yes && !count.value){ cHint.className='hint err'; cHint.textContent='Elige el número de invitados.'; count.focus(); return; }
 
-    const lines = ['🕊️ Confirmación de asistencia', EVENTO, ''];
+    const lines = ['Confirmación de asistencia', EVENTO, ''];
     if(guest) lines.push(`Invitado: ${guest.name}`);
     lines.push(`¿Asistirá?: ${yes ? 'Sí' : 'No'}`);
     if(yes) lines.push(`Número de invitados: ${count.value}` + (limited ? ` de ${max}` : ''));
