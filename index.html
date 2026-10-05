@@ -140,6 +140,27 @@ body::before{
 .done a{color:var(--ink)}
 .btn:focus-visible{outline:2px solid var(--taupe);outline-offset:3px}
 
+
+/* ── Pase personalizado ── */
+.pass{margin-top:36px}
+.pass-msg{font-family:var(--script);font-size:1.9rem;line-height:1.15;color:var(--taupe);text-wrap:balance}
+.pass-name{font-size:1.55rem;line-height:1.3;color:var(--ink);margin-top:10px;text-wrap:balance}
+.pase{
+  display:inline-flex;flex-direction:column;align-items:center;
+  margin:20px auto 0;padding:16px 36px 13px;border-radius:999px 999px 14px 14px;
+  border:1px solid var(--groove);box-shadow:1px 1px 0 var(--light), inset 1px 1px 0 var(--light);
+}
+.pase-num{font-family:var(--roman);font-size:2.6rem;line-height:1;color:var(--ink)}
+.pase-txt{font-family:var(--roman);font-size:.74rem;letter-spacing:.22em;color:var(--taupe);margin:6px -.22em 0 0}
+.pass-note{text-wrap:balance;font-style:italic;font-size:1.05rem;color:var(--taupe);margin-top:16px}
+
+/* ── Generador (solo con ?crear) ── */
+.gen{text-align:left;max-width:360px;margin:0 auto 40px;padding:20px;border:1px dashed var(--sand);border-radius:16px;display:flex;flex-direction:column;gap:14px}
+.gen[hidden]{display:none}
+.gen h2{font-family:var(--roman);font-weight:400;font-size:1rem;letter-spacing:.12em;text-align:center}
+.gen input{width:100%;font:inherit;font-size:1.1rem;color:var(--ink);background:#fff;border:1px solid var(--groove);border-radius:10px;padding:11px 14px}
+.gen-actions{display:flex;flex-direction:column;gap:10px}
+.gen-actions .btn{width:100%;margin:0}
 .closing{margin-top:6px}
 .closing p{font-family:var(--script);font-size:2rem;color:var(--taupe)}
 
@@ -160,6 +181,27 @@ body::before{
 <body>
 <main class="card">
 
+  <section class="gen" id="gen" hidden aria-labelledby="gen-title">
+    <h2 id="gen-title">Crear invitación personalizada</h2>
+    <div class="field">
+      <label for="gen-name">Nombre del invitado</label>
+      <input id="gen-name" type="text" placeholder="Ej. Familia Rubio Ayala" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="gen-seats">Lugares (0 = abierta)</label>
+      <input id="gen-seats" type="number" min="0" max="50" value="2" inputmode="numeric">
+    </div>
+    <div class="field">
+      <label for="gen-link">Link</label>
+      <input id="gen-link" type="text" readonly>
+    </div>
+    <div class="gen-actions">
+      <button class="btn btn-ink" type="button" id="gen-copy">Copiar link</button>
+      <a class="btn btn-ghost" id="gen-wa" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+      <a class="btn btn-ghost" id="gen-open" target="_blank" rel="noopener">Ver invitación</a>
+    </div>
+  </section>
+
   <header>
     <svg class="dove" viewBox="-6 6 252 170" aria-hidden="true">
       <g stroke-width="1.15" stroke-linejoin="round" stroke-linecap="round"><path d="M120.0 90.0Q115.4 69.5 100.9 59.5Q103.6 76.9 120.0 90.0ZM120.0 90.0Q121.3 69.0 110.1 55.4Q107.8 72.9 120.0 90.0ZM120.0 90.0Q127.0 68.0 120.0 50.0Q113.0 68.0 120.0 90.0ZM120.0 90.0Q132.2 72.9 129.9 55.4Q118.7 69.0 120.0 90.0ZM120.0 90.0Q136.4 76.9 139.1 59.5Q124.6 69.5 120.0 90.0Z" stroke="#fff" transform="translate(-0.7,-0.7)"/><path d="M120.0 90.0Q115.4 69.5 100.9 59.5Q103.6 76.9 120.0 90.0ZM120.0 90.0Q121.3 69.0 110.1 55.4Q107.8 72.9 120.0 90.0ZM120.0 90.0Q127.0 68.0 120.0 50.0Q113.0 68.0 120.0 90.0ZM120.0 90.0Q132.2 72.9 129.9 55.4Q118.7 69.0 120.0 90.0ZM120.0 90.0Q136.4 76.9 139.1 59.5Q124.6 69.5 120.0 90.0Z" stroke="#6C5C48" stroke-opacity="0.3" transform="translate(0.7,0.7)"/><path d="M120.0 90.0Q115.4 69.5 100.9 59.5Q103.6 76.9 120.0 90.0ZM120.0 90.0Q121.3 69.0 110.1 55.4Q107.8 72.9 120.0 90.0ZM120.0 90.0Q127.0 68.0 120.0 50.0Q113.0 68.0 120.0 90.0ZM120.0 90.0Q132.2 72.9 129.9 55.4Q118.7 69.0 120.0 90.0ZM120.0 90.0Q136.4 76.9 139.1 59.5Q124.6 69.5 120.0 90.0Z" stroke="#E7E0D3"/><path d="M112.0 96.0C94.0 70.0 62.0 38.0 20.0 20.0Q14.5 26.4 18.0 34.0Q14.9 43.3 22.0 50.0Q22.0 59.9 31.0 64.0Q32.8 74.3 43.0 77.0Q46.5 87.0 57.0 88.0Q62.1 97.6 73.0 97.0Q78.8 105.6 89.0 104.0Q96.2 111.4 106.0 108.0ZM72.5 70.0Q45.3 48.0 18.0 34.0M74.2 76.7Q48.1 59.3 22.0 50.0M78.0 82.6Q54.5 69.3 31.0 64.0M83.0 88.0Q63.0 78.5 43.0 77.0M88.9 92.6Q73.0 86.3 57.0 88.0M95.6 96.4Q84.3 92.7 73.0 97.0M102.3 99.4Q95.7 97.7 89.0 104.0" stroke="#fff" transform="translate(-0.7,-0.7)"/><path d="M112.0 96.0C94.0 70.0 62.0 38.0 20.0 20.0Q14.5 26.4 18.0 34.0Q14.9 43.3 22.0 50.0Q22.0 59.9 31.0 64.0Q32.8 74.3 43.0 77.0Q46.5 87.0 57.0 88.0Q62.1 97.6 73.0 97.0Q78.8 105.6 89.0 104.0Q96.2 111.4 106.0 108.0ZM72.5 70.0Q45.3 48.0 18.0 34.0M74.2 76.7Q48.1 59.3 22.0 50.0M78.0 82.6Q54.5 69.3 31.0 64.0M83.0 88.0Q63.0 78.5 43.0 77.0M88.9 92.6Q73.0 86.3 57.0 88.0M95.6 96.4Q84.3 92.7 73.0 97.0M102.3 99.4Q95.7 97.7 89.0 104.0" stroke="#6C5C48" stroke-opacity="0.3" transform="translate(0.7,0.7)"/><path d="M112.0 96.0C94.0 70.0 62.0 38.0 20.0 20.0Q14.5 26.4 18.0 34.0Q14.9 43.3 22.0 50.0Q22.0 59.9 31.0 64.0Q32.8 74.3 43.0 77.0Q46.5 87.0 57.0 88.0Q62.1 97.6 73.0 97.0Q78.8 105.6 89.0 104.0Q96.2 111.4 106.0 108.0ZM72.5 70.0Q45.3 48.0 18.0 34.0M74.2 76.7Q48.1 59.3 22.0 50.0M78.0 82.6Q54.5 69.3 31.0 64.0M83.0 88.0Q63.0 78.5 43.0 77.0M88.9 92.6Q73.0 86.3 57.0 88.0M95.6 96.4Q84.3 92.7 73.0 97.0M102.3 99.4Q95.7 97.7 89.0 104.0" stroke="#E7E0D3"/><path d="M128.0 96.0C146.0 70.0 178.0 38.0 220.0 20.0Q225.5 26.4 222.0 34.0Q225.1 43.3 218.0 50.0Q218.0 59.9 209.0 64.0Q207.2 74.3 197.0 77.0Q193.5 87.0 183.0 88.0Q177.9 97.6 167.0 97.0Q161.2 105.6 151.0 104.0Q143.8 111.4 134.0 108.0ZM167.5 70.0Q194.7 48.0 222.0 34.0M165.8 76.7Q191.9 59.3 218.0 50.0M162.0 82.6Q185.5 69.3 209.0 64.0M157.0 88.0Q177.0 78.5 197.0 77.0M151.1 92.6Q167.1 86.3 183.0 88.0M144.4 96.4Q155.7 92.7 167.0 97.0M137.7 99.4Q144.3 97.7 151.0 104.0" stroke="#fff" transform="translate(-0.7,-0.7)"/><path d="M128.0 96.0C146.0 70.0 178.0 38.0 220.0 20.0Q225.5 26.4 222.0 34.0Q225.1 43.3 218.0 50.0Q218.0 59.9 209.0 64.0Q207.2 74.3 197.0 77.0Q193.5 87.0 183.0 88.0Q177.9 97.6 167.0 97.0Q161.2 105.6 151.0 104.0Q143.8 111.4 134.0 108.0ZM167.5 70.0Q194.7 48.0 222.0 34.0M165.8 76.7Q191.9 59.3 218.0 50.0M162.0 82.6Q185.5 69.3 209.0 64.0M157.0 88.0Q177.0 78.5 197.0 77.0M151.1 92.6Q167.1 86.3 183.0 88.0M144.4 96.4Q155.7 92.7 167.0 97.0M137.7 99.4Q144.3 97.7 151.0 104.0" stroke="#6C5C48" stroke-opacity="0.3" transform="translate(0.7,0.7)"/><path d="M128.0 96.0C146.0 70.0 178.0 38.0 220.0 20.0Q225.5 26.4 222.0 34.0Q225.1 43.3 218.0 50.0Q218.0 59.9 209.0 64.0Q207.2 74.3 197.0 77.0Q193.5 87.0 183.0 88.0Q177.9 97.6 167.0 97.0Q161.2 105.6 151.0 104.0Q143.8 111.4 134.0 108.0ZM167.5 70.0Q194.7 48.0 222.0 34.0M165.8 76.7Q191.9 59.3 218.0 50.0M162.0 82.6Q185.5 69.3 209.0 64.0M157.0 88.0Q177.0 78.5 197.0 77.0M151.1 92.6Q167.1 86.3 183.0 88.0M144.4 96.4Q155.7 92.7 167.0 97.0M137.7 99.4Q144.3 97.7 151.0 104.0" stroke="#E7E0D3"/><path d="M120 72C133 78 137 99 134 116C131 131 127 140 120 144C113 140 109 131 106 116C103 99 107 78 120 72Z" stroke="#fff" transform="translate(-0.7,-0.7)"/><path d="M120 72C133 78 137 99 134 116C131 131 127 140 120 144C113 140 109 131 106 116C103 99 107 78 120 72Z" stroke="#6C5C48" stroke-opacity="0.3" transform="translate(0.7,0.7)"/><path d="M120 72C133 78 137 99 134 116C131 131 127 140 120 144C113 140 109 131 106 116C103 99 107 78 120 72Z" stroke="#E7E0D3"/><path d="M120 132C128 132 131 140 129 148C127 156 123 160 120 167C117 160 113 156 111 148C109 140 112 132 120 132Z" stroke="#fff" transform="translate(-0.7,-0.7)"/><path d="M120 132C128 132 131 140 129 148C127 156 123 160 120 167C117 160 113 156 111 148C109 140 112 132 120 132Z" stroke="#6C5C48" stroke-opacity="0.3" transform="translate(0.7,0.7)"/><path d="M120 132C128 132 131 140 129 148C127 156 123 160 120 167C117 160 113 156 111 148C109 140 112 132 120 132Z" stroke="#E7E0D3"/></g>
@@ -171,6 +213,16 @@ body::before{
       <p class="verse">Antes que te formase en el vientre te conocí, y antes que nacieses te santifiqué.<cite>JEREMÍAS 1:5</cite></p>
     </div>
   </header>
+
+  <section class="pass" id="pass" hidden aria-label="Tu invitación">
+    <p class="pass-msg">Con mucho cariño, esta invitación es para</p>
+    <p class="pass-name" id="pass-name"></p>
+    <div class="pase">
+      <span class="pase-num" id="pase-num"></span>
+      <span class="pase-txt" id="pase-txt"></span>
+    </div>
+    <p class="pass-note">Nos encantará compartir contigo este día tan especial.</p>
+  </section>
 
   <svg class="cross" viewBox="0 0 26 38" aria-hidden="true"><g fill="none" stroke-width="1.4" stroke-linecap="round"><path d="M13 2V36M3 12H23" stroke="#fff" transform="translate(-.7,-.7)"/><path d="M13 2V36M3 12H23" stroke="#6C5C48" stroke-opacity=".3" transform="translate(.7,.7)"/><path d="M13 2V36M3 12H23" stroke="#E7E0D3"/></g></svg>
 
@@ -248,31 +300,63 @@ body::before{
 
 <script>
 /* ── Configuración ── */
-const WHATSAPP    = '527227026740';   // 722 702 6740
-const EVENTO      = 'Bautizo de Emilio Aurelio · 6 de noviembre de 2026';
-const MAX_INVITADOS = 10;             // opciones en "Número de invitados"
+const WHATSAPP     = '527227026740';   // 722 702 6740
+const EVENTO       = 'Bautizo de Emilio Aurelio · 6 de noviembre de 2026';
+const MAX_SIN_PASE = 10;               // opciones si se abre la invitación sin pase personal
 
+/* Pase personal: ?i=<código>. El código es "Nombre|lugares" en base64url (0 = invitación abierta).
+   La lista de invitados no vive en la página.  Generador de links: abre la página con ?crear */
+const encode = (name, seats) => {
+  const bytes = new TextEncoder().encode(`${name.trim()}|${seats}`);
+  return btoa(String.fromCharCode(...bytes)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+};
+const decode = code => {
+  try{
+    const b64 = code.replace(/-/g,'+').replace(/_/g,'/') + '==='.slice((code.length+3)%4);
+    const txt = new TextDecoder().decode(Uint8Array.from(atob(b64), c => c.charCodeAt(0)));
+    const i = txt.lastIndexOf('|'); const name = txt.slice(0,i).trim(); const seats = parseInt(txt.slice(i+1),10);
+    return (name && !isNaN(seats)) ? {name, seats, open: seats===0} : null;
+  }catch(e){ return null; }
+};
+const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const params = new URLSearchParams(location.search);
+
+/* ── Pase personalizado ── */
+const guest = params.get('i') ? decode(params.get('i')) : null;
+if(guest){
+  document.getElementById('pass').hidden = false;
+  document.getElementById('pass-name').textContent = guest.name;
+  document.getElementById('pase-num').textContent = guest.open ? '∞' : guest.seats;
+  document.getElementById('pase-txt').textContent =
+    guest.open ? 'LUGARES ABIERTOS' : (guest.seats===1 ? 'LUGAR RESERVADO' : 'LUGARES RESERVADOS');
+  document.title = `${guest.name} · Bautizo de Emilio Aurelio`;
+}
+
+/* ── Confirmación ── */
 (function(){
   const form   = document.getElementById('rsvp');
   const attend = document.getElementById('attend');
   const count  = document.getElementById('count');
   const aHint  = document.getElementById('attend-hint');
   const cHint  = document.getElementById('count-hint');
+  const limited = guest && !guest.open;
+  const max     = limited ? guest.seats : MAX_SIN_PASE;
+  const seatsTxt = () => limited ? `Tienes ${max} ${max===1?'lugar disponible':'lugares disponibles'}.` : '';
 
   attend.addEventListener('change', () => {
     aHint.textContent = ''; aHint.className = 'hint';
-    cHint.textContent = ''; cHint.className = 'hint';
-    count.innerHTML = '';
+    cHint.className = 'hint'; count.innerHTML = '';
     if(attend.value === 'si'){
       count.add(new Option('Selecciona cuántos asistirán',''));
-      for(let n=1; n<=MAX_INVITADOS; n++) count.add(new Option(n===1 ? '1 persona' : `${n} personas`, n));
-      count.disabled = false;
+      for(let n=1; n<=max; n++) count.add(new Option(n===1 ? '1 persona' : `${n} personas`, n));
+      if(max === 1) count.value = '1';
+      count.disabled = false; cHint.textContent = seatsTxt();
     }else{
       count.add(new Option(attend.value==='no' ? 'No aplica' : 'Primero confirma si asistirás',''));
-      count.disabled = true;
+      count.disabled = true; cHint.textContent = '';
     }
   });
-  count.addEventListener('change', () => { cHint.textContent = ''; cHint.className = 'hint'; });
+  count.addEventListener('change', () => { cHint.className = 'hint'; cHint.textContent = seatsTxt(); });
 
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -280,17 +364,43 @@ const MAX_INVITADOS = 10;             // opciones en "Número de invitados"
     const yes = attend.value === 'si';
     if(yes && !count.value){ cHint.className='hint err'; cHint.textContent='Elige el número de invitados.'; count.focus(); return; }
 
-    const lines = ['Confirmación de asistencia', EVENTO, '', `¿Asistirá?: ${yes ? 'Sí' : 'No'}`];
-    if(yes) lines.push(`Número de invitados: ${count.value}`);
+    const lines = ['🕊️ Confirmación de asistencia', EVENTO, ''];
+    if(guest) lines.push(`Invitado: ${guest.name}`);
+    lines.push(`¿Asistirá?: ${yes ? 'Sí' : 'No'}`);
+    if(yes) lines.push(`Número de invitados: ${count.value}` + (limited ? ` de ${max}` : ''));
     const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join('\n'))}`;
     window.open(url, '_blank', 'noopener');
 
+    const first = guest ? ', ' + esc(guest.name.split(' ')[0]) : '';
     const done = document.createElement('div');
     done.className = 'done'; done.setAttribute('role','status');
-    done.innerHTML = (yes ? '<p>¡Gracias! Nos dará mucho gusto verte.</p>' : '<p>Gracias por avisarnos. Te vamos a extrañar.</p>')
+    done.innerHTML = (yes ? `<p>¡Gracias${first}! Nos dará mucho gusto verte.</p>` : `<p>Gracias por avisarnos${first}. Te vamos a extrañar.</p>`)
       + `<p>Se abrió WhatsApp con tu confirmación; solo presiona enviar. Si no se abrió, <a href="${url}" target="_blank" rel="noopener">toca aquí</a>.</p>`;
     form.replaceWith(done);
   });
+})();
+
+/* ── Generador de links (?crear) ── */
+(function(){
+  if(!params.has('crear')) return;
+  const gen = document.getElementById('gen'); gen.hidden = false;
+  const name = document.getElementById('gen-name'), seats = document.getElementById('gen-seats');
+  const link = document.getElementById('gen-link'), wa = document.getElementById('gen-wa');
+  const openA = document.getElementById('gen-open'), copy = document.getElementById('gen-copy');
+  const base = location.origin + location.pathname;
+  function update(){
+    const n = name.value.trim(), s = Math.max(0, parseInt(seats.value,10) || 0);
+    const url = n ? `${base}?i=${encode(n, s)}` : '';
+    link.value = url; openA.href = url || '#';
+    wa.href = url ? `https://wa.me/?text=${encodeURIComponent(`¡Hola! Te comparto la invitación al bautizo de Emilio Aurelio. Por favor confirma tu asistencia aquí: ${url}`)}` : '#';
+  }
+  name.addEventListener('input', update); seats.addEventListener('input', update);
+  copy.addEventListener('click', async () => {
+    if(!link.value) return;
+    try{ await navigator.clipboard.writeText(link.value); }catch(e){ link.select(); document.execCommand('copy'); }
+    copy.textContent = '¡Copiado!'; setTimeout(()=>copy.textContent='Copiar link', 1500);
+  });
+  update(); name.focus();
 })();
 </script>
 </body>
