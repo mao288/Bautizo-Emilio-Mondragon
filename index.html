@@ -161,6 +161,14 @@ body::before{
 .gen input{width:100%;font:inherit;font-size:1.1rem;color:var(--ink);background:#fff;border:1px solid var(--groove);border-radius:10px;padding:11px 14px}
 .gen-actions{display:flex;flex-direction:column;gap:10px}
 .gen-actions .btn{width:100%;margin:0}
+
+/* ── Vestimenta ── */
+.dress-code{font-family:var(--roman);font-size:1.3rem;letter-spacing:.3em;margin-right:-.3em;color:var(--ink)}
+.dress-row{display:flex;justify-content:center;gap:clamp(28px,10vw,60px);margin-top:22px}
+.dress-row div{display:flex;flex-direction:column;align-items:center;gap:6px}
+.dress-ic{font-size:1.9rem;line-height:1}
+.dress-who{font-family:var(--roman);font-size:.74rem;letter-spacing:.22em;color:var(--taupe);margin-right:-.22em}
+.dress-what{font-size:1.2rem;color:var(--ink)}
 .closing{margin-top:6px}
 .closing p{font-family:var(--script);font-size:2rem;color:var(--taupe)}
 
@@ -256,6 +264,20 @@ body::before{
 
   <svg class="cross" viewBox="0 0 26 38" aria-hidden="true"><g fill="none" stroke-width="1.4" stroke-linecap="round"><path d="M13 2V36M3 12H23" stroke="#fff" transform="translate(-.7,-.7)"/><path d="M13 2V36M3 12H23" stroke="#6C5C48" stroke-opacity=".3" transform="translate(.7,.7)"/><path d="M13 2V36M3 12H23" stroke="#E7E0D3"/></g></svg>
 
+  <section class="dress" aria-labelledby="dress-title">
+    <p class="lead" id="dress-title">Código de vestimenta</p>
+    <p class="dress-code">FORMAL</p>
+    <div class="dress-row">
+      <div><span class="dress-ic" aria-hidden="true">👗</span><span class="dress-who">MUJERES</span><span class="dress-what">Vestido</span></div>
+      <div><span class="dress-ic" aria-hidden="true">👔</span><span class="dress-who">HOMBRES</span><span class="dress-what">Traje</span></div>
+    </div>
+  </section>
+
+  <svg class="cross" viewBox="0 0 26 38" aria-hidden="true"><g fill="none" stroke-width="1.4" stroke-linecap="round"><path d="M13 2V36M3 12H23" stroke="#fff" transform="translate(-.7,-.7)"/><path d="M13 2V36M3 12H23" stroke="#6C5C48" stroke-opacity=".3" transform="translate(.7,.7)"/><path d="M13 2V36M3 12H23" stroke="#E7E0D3"/></g></svg>
+
+  <div id="rsvp-wrap" hidden>
+  
+
   <section class="rsvp" id="confirmar" aria-labelledby="rsvp-title">
     <h2 id="rsvp-title">Confirma tu asistencia</h2>
 
@@ -292,6 +314,7 @@ body::before{
   </section>
 
   <svg class="cross" viewBox="0 0 26 38" aria-hidden="true"><g fill="none" stroke-width="1.4" stroke-linecap="round"><path d="M13 2V36M3 12H23" stroke="#fff" transform="translate(-.7,-.7)"/><path d="M13 2V36M3 12H23" stroke="#6C5C48" stroke-opacity=".3" transform="translate(.7,.7)"/><path d="M13 2V36M3 12H23" stroke="#E7E0D3"/></g></svg>
+  </div>
 
   <footer class="closing">
     <p>¡Te espero!</p>
@@ -325,6 +348,7 @@ const params = new URLSearchParams(location.search);
 const guest = params.get('i') ? decode(params.get('i')) : null;
 if(guest){
   document.getElementById('pass').hidden = false;
+  document.getElementById('rsvp-wrap').hidden = false;
   document.getElementById('pass-name').textContent = guest.name;
   document.getElementById('pase-num').textContent = guest.open ? '∞' : guest.seats;
   document.getElementById('pase-txt').textContent =
@@ -334,6 +358,7 @@ if(guest){
 
 /* ── Confirmación ── */
 (function(){
+  if(!guest) return;               // sin código: solo la invitación, sin confirmación
   const form   = document.getElementById('rsvp');
   const attend = document.getElementById('attend');
   const count  = document.getElementById('count');
