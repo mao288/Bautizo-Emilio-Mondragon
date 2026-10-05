@@ -115,61 +115,32 @@ body::before{
 
 /* ── RSVP ── */
 .rsvp h2{font-family:var(--script);font-weight:400;font-size:clamp(2.3rem,9vw,2.8rem);color:var(--ink);line-height:1}
-.rsvp .intro{font-size:1.08rem;line-height:1.55;color:var(--taupe);max-width:32ch;margin:10px auto 28px}
-.form{text-align:left;max-width:360px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.rsvp .intro{font-size:1.08rem;line-height:1.55;color:var(--taupe);max-width:32ch;margin:10px auto 0;text-wrap:balance}
+.for{font-family:var(--roman);font-size:.8rem;letter-spacing:.24em;color:var(--taupe);margin:22px -.24em 0 0;text-transform:uppercase}
+.guest-name{font-size:1.5rem;line-height:1.3;color:var(--ink);margin-top:8px;text-wrap:balance}
+.form{text-align:left;max-width:340px;margin:28px auto 0;display:flex;flex-direction:column;gap:20px}
 .field label{display:block;font-family:var(--roman);font-size:.8rem;letter-spacing:.12em;color:var(--taupe);margin-bottom:8px}
-.field input,.field select{
-  width:100%;font:inherit;font-size:1.15rem;color:var(--ink);
-  background:rgba(255,255,255,.55);
-  border:1px solid var(--groove);border-radius:12px;
-  padding:13px 16px;
-  box-shadow:inset 1px 1px 2px rgba(108,92,72,.08), 0 1px 0 var(--light);
-  -webkit-appearance:none;appearance:none;
-}
-.field input::placeholder{color:#B3A692;font-style:italic}
-.dd{position:relative}
-.dd-btn{
-  width:100%;text-align:left;font:inherit;font-size:1.15rem;color:var(--ink);cursor:pointer;
+.field select{
+  width:100%;font:inherit;font-size:1.15rem;color:var(--ink);cursor:pointer;
   background:rgba(255,255,255,.55);border:1px solid var(--groove);border-radius:12px;
-  padding:13px 44px 13px 16px;position:relative;
+  padding:13px 44px 13px 16px;
   box-shadow:inset 1px 1px 2px rgba(108,92,72,.08), 0 1px 0 var(--light);
-}
-.dd-btn::after{content:'';position:absolute;right:18px;top:50%;width:7px;height:7px;border-right:1.5px solid var(--taupe);border-bottom:1.5px solid var(--taupe);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
-.dd-btn[aria-expanded="true"]::after{transform:translateY(-20%) rotate(225deg)}
-.dd-btn .placeholder{color:#B3A692;font-style:italic}
-.dd-btn:focus-visible,.dd-panel input:focus-visible{outline:2px solid var(--taupe);outline-offset:3px}
-.dd-panel{
-  position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:5;
-  background:#FCFBF8;border:1px solid var(--groove);border-radius:12px;
-  box-shadow:0 18px 36px -16px rgba(90,74,55,.35);padding:8px;
-}
-.dd-panel[hidden]{display:none}
-.dd-panel input{
-  width:100%;font:inherit;font-size:1.05rem;color:var(--ink);
-  background:#F3EFE8;border:1px solid transparent;border-radius:8px;padding:10px 12px;
   -webkit-appearance:none;appearance:none;
 }
-.dd-panel input::placeholder{color:#B3A692;font-style:italic}
-.list{list-style:none;max-height:260px;overflow-y:auto;margin-top:6px;overscroll-behavior:contain}
-.list li{padding:11px 12px;border-radius:8px;font-size:1.1rem;cursor:pointer;line-height:1.25}
-.list li.active,.list li:hover{background:#EFE9DF}
-.list li[aria-selected="true"]{font-weight:500}
-.list .empty{color:var(--taupe);font-style:italic;cursor:default}
-.list .empty:hover{background:none}
+.field select:disabled{opacity:.55;cursor:not-allowed}
+.field select:focus-visible{outline:2px solid var(--taupe);outline-offset:3px}
 .sel-wrap{position:relative}
 .sel-wrap::after{content:'';position:absolute;right:18px;top:50%;width:7px;height:7px;border-right:1.5px solid var(--taupe);border-bottom:1.5px solid var(--taupe);transform:translateY(-70%) rotate(45deg);pointer-events:none}
-.field select{padding-right:44px;cursor:pointer}
-.field select:disabled{opacity:.55;cursor:not-allowed}
-.hint{font-size:1rem;color:var(--taupe);margin-top:8px;min-height:1.3em;font-style:italic}
+.hint{font-size:1rem;color:var(--taupe);margin-top:6px;min-height:1.2em;font-style:italic}
 .err{color:#9A4B2C;font-style:normal}
-.btn-ink{background:var(--ink);color:var(--paper);border:none;width:100%;padding:16px 24px;font-size:.9rem;box-shadow:0 10px 22px -12px rgba(89,75,60,.7)}
+.form .btn-ink{width:100%;margin-top:4px}
+.btn-ink{background:var(--ink);color:var(--paper);border:none;padding:16px 24px;font-size:.9rem;box-shadow:0 10px 22px -12px rgba(89,75,60,.7)}
 .btn-ink:hover{background:#4A3E32}
-.btn-ink:disabled{opacity:.6;cursor:wait}
-.link{background:none;border:none;font:inherit;font-size:1rem;color:var(--taupe);text-decoration:underline;text-underline-offset:3px;cursor:pointer;display:block;margin:4px auto 0}
-.done{max-width:340px;margin:0 auto}
+.done{max-width:340px;margin:24px auto 0}
 .done p{font-size:1.15rem;line-height:1.55;color:var(--ink)}
 .done p + p{color:var(--taupe);font-size:1.05rem;margin-top:12px}
 .done a{color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--taupe);outline-offset:3px}
 
 .closing{margin-top:6px}
 .closing p{font-family:var(--script);font-size:2rem;color:var(--taupe)}
@@ -237,38 +208,39 @@ body::before{
 
   <section class="rsvp" id="confirmar" aria-labelledby="rsvp-title">
     <h2 id="rsvp-title">Confirma tu asistencia</h2>
-    <p class="intro">Selecciona tu nombre, elige cuántos asistirán y envíanos tu confirmación por WhatsApp.</p>
 
-    <form class="form" id="rsvp" novalidate>
-      <div class="field">
-        <label id="guest-label">Tu nombre</label>
-        <div class="dd" id="dd">
-          <button type="button" class="dd-btn" id="dd-btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="guest-label dd-value">
-            <span id="dd-value" class="placeholder">Selecciona tu nombre</span>
-          </button>
-          <div class="dd-panel" id="dd-panel" hidden>
-            <input id="guest" type="search" autocomplete="off" spellcheck="false"
-                   placeholder="Buscar nombre o apellido" aria-label="Buscar nombre"
-                   aria-controls="guest-list" aria-autocomplete="list">
-            <ul class="list" id="guest-list" role="listbox" aria-labelledby="guest-label"></ul>
+    <div id="rsvp-guest" hidden>
+      <p class="for">Esta invitación es para</p>
+      <p class="guest-name" id="guest-name"></p>
+
+      <form class="form" id="rsvp" novalidate>
+        <div class="field">
+          <label for="attend">¿Asistirás?</label>
+          <div class="sel-wrap">
+            <select id="attend">
+              <option value="">Selecciona una opción</option>
+              <option value="si">Sí</option>
+              <option value="no">No</option>
+            </select>
           </div>
+          <p class="hint" id="attend-hint" aria-live="polite"></p>
         </div>
-        <p class="hint" id="guest-hint" aria-live="polite"></p>
-      </div>
 
-      <div class="field">
-        <label for="count">¿Cuántos asistirán?</label>
-        <div class="sel-wrap">
-          <select id="count" disabled>
-            <option value="">Primero elige tu nombre</option>
-          </select>
+        <div class="field">
+          <label for="count">Número de invitados</label>
+          <div class="sel-wrap">
+            <select id="count" disabled>
+              <option value="">Primero confirma si asistirás</option>
+            </select>
+          </div>
+          <p class="hint" id="count-hint" aria-live="polite"></p>
         </div>
-        <p class="hint" id="count-hint" aria-live="polite"></p>
-      </div>
 
-      <button class="btn btn-ink" type="submit">Confirmar asistencia</button>
-      <button class="link" type="button" id="not-found">¿No encuentras tu nombre?</button>
-    </form>
+        <button class="btn btn-ink" type="submit">Confirmar asistencia</button>
+      </form>
+    </div>
+
+    <p class="intro" id="rsvp-nolink" hidden>Para confirmar tu asistencia usa el enlace personal que recibiste por WhatsApp.</p>
   </section>
 
   <svg class="cross" viewBox="0 0 26 38" aria-hidden="true"><g fill="none" stroke-width="1.4" stroke-linecap="round"><path d="M13 2V36M3 12H23" stroke="#fff" transform="translate(-.7,-.7)"/><path d="M13 2V36M3 12H23" stroke="#6C5C48" stroke-opacity=".3" transform="translate(.7,.7)"/><path d="M13 2V36M3 12H23" stroke="#E7E0D3"/></g></svg>
@@ -280,210 +252,83 @@ body::before{
 
 <script>
 /* ── Configuración ── */
-const WHATSAPP = '527227026740';            // 722 702 6740
+const WHATSAPP = '527227026740';   // 722 702 6740
 const EVENTO   = 'Bautizo de Emilio Aurelio · 6 de noviembre de 2026';
-const ABIERTA_MAX = 10;                     // tope para invitaciones con número abierto
 
-/* [nombre, adultos, niños] — adultos 0 = invitación abierta */
-const INVITADOS = [
-  ["Arturo González Torres", 5, 0],
-  ["Ernesto González Torres", 4, 0],
-  ["Marisol González Torres", 6, 0],
-  ["Anahí González Torres", 4, 0],
-  ["Arturo González Becerril", 2, 0],
-  ["Rosa Torres", 3, 0],
-  ["Jesús Pérez Torres", 5, 0],
-  ["Brenda", 2, 2],
-  ["Bertha Torres", 1, 0],
-  ["Nayeli Sandoval", 2, 1],
-  ["Miguel Torres", 2, 0],
-  ["Luis Torres", 2, 2],
-  ["Mariana Torres", 2, 0],
-  ["Mireya Torres", 2, 0],
-  ["Julio RH", 1, 0],
-  ["Moisés Navarro", 2, 0],
-  ["Eder Jaimes", 2, 0],
-  ["Luis Díaz", 2, 0],
-  ["David López", 2, 0],
-  ["Javier Berra", 2, 0],
-  ["Uriel Anaya", 2, 0],
-  ["Alberto Esquivel", 1, 0],
-  ["Roger Rodríguez", 1, 0],
-  ["Óscar González", 2, 2],
-  ["Marcos González", 2, 0],
-  ["Raul San Juan", 1, 0],
-  ["George Ramos", 1, 0],
-  ["Verania Soto", 1, 0],
-  ["Estuardo Rodríguez", 2, 0],
-  ["Ana P Aguilar", 2, 0],
-  ["Pía Masoli", 2, 1],
-  ["Ángel Lugo", 2, 2],
-  ["Montze Moreno", 2, 0],
-  ["Viridiana Serna", 2, 0],
-  ["Alfredo Neri", 1, 0],
-  ["Karla Vanessa Carvajal", 1, 0],
-  ["Thalia Solís", 2, 0],
-  ["Gustavo Adolfo Infante", 2, 0],
-  ["Jimmy Humilde", 0, 0],
-  ["Emir Torres", 4, 0],
-  ["Jesús Arana", 2, 0],
-  ["Roberto Arana", 2, 0],
-  ["Jesús Arana Reyes", 2, 0],
-  ["Jonathan Keferrman", 4, 0],
-  ["Lencho Sánchez", 5, 2],
-  ["Juventino Padilla", 2, 0],
-  ["Araceli Mondragón", 2, 0],
-  ["Anahid Mondragón", 3, 1],
-  ["Martin Mondragón", 2, 0],
-  ["Arturo Mondragón", 2, 0],
-  ["Francisco González", 5, 0],
-  ["Lino Acuña", 2, 0],
-  ["Alejandra Estrada", 2, 0],
-  ["Alejandra Velázquez", 2, 0],
-  ["Gabriela Nava", 2, 0],
-  ["Carlos Ballesteros", 3, 0],
-  ["Jonnhy", 2, 0],
-  ["Mauricio Almanza", 2, 0],
-  ["Kevin Manjarrez", 2, 0],
-  ["Joss Reynoso", 2, 0],
-  ["Zuriel Reynoso", 2, 0],
-  ["Geovani HP", 2, 0],
-  ["Gibran Campos", 3, 0],
-  ["Octavio Alcántara", 2, 0],
-  ["Richard", 2, 0],
-  ["Luis Delgado", 1, 0],
-  ["Pepe Soto", 1, 0],
-  ["Daniela Macedo", 4, 0],
-  ["Maries y Alejandro Alducin", 2, 0],
-  ["Javier Espinoza", 7, 0],
-  ["Pamela Alducin", 3, 0],
-  ["David Alducin", 3, 0],
-  ["Fernando López", 2, 2],
-  ["Sergio López", 1, 0],
-  ["Jaime Lamela", 2, 0],
-  ["Janeth Terrazas", 1, 0],
-  ["Irma Martínez", 1, 0],
-  ["Bertha Gallardo", 1, 0],
-  ["Jaime Hernández", 4, 0],
-  ["Francisco López", 1, 0],
-  ["Raúl Mondragón CH", 5, 2]
-];
-
+/* Cada invitado recibe un enlace propio: ?i=<código>.
+   El código trae "Nombre|adultos|niños" en base64url; la página no contiene la lista de invitados. */
 (function(){
-  const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
-  const guests = INVITADOS.map(([name,a,k]) => ({
-    name, adults:a, kids:k, open:a===0, total:a===0?ABIERTA_MAX:a+k, key:norm(name)
-  })).sort((x,y)=>x.name.localeCompare(y.name,'es'));
+  function decode(code){
+    try{
+      const b64 = code.replace(/-/g,'+').replace(/_/g,'/') + '==='.slice((code.length+3)%4);
+      const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+      const [name,a,k] = new TextDecoder().decode(bytes).split('|');
+      const adults = parseInt(a,10), kids = parseInt(k,10);
+      if(!name || isNaN(adults) || isNaN(kids)) return null;
+      return {name, adults, kids, open: adults===0, total: adults+kids};
+    }catch(e){ return null; }
+  }
 
-  const dd    = document.getElementById('dd');
-  const btn   = document.getElementById('dd-btn');
-  const val   = document.getElementById('dd-value');
-  const panel = document.getElementById('dd-panel');
-  const input = document.getElementById('guest');
-  const list  = document.getElementById('guest-list');
-  const hint  = document.getElementById('guest-hint');
-  const count = document.getElementById('count');
-  const cHint = document.getElementById('count-hint');
-  const form  = document.getElementById('rsvp');
-  let matches = guests, active = -1, chosen = null;
+  const code  = new URLSearchParams(location.search).get('i');
+  const guest = code ? decode(code) : null;
+  const box   = document.getElementById('rsvp-guest');
 
-  function render(){
-    const q = norm(input.value);
-    const words = q.split(/\s+/).filter(Boolean);
-    matches = words.length ? guests.filter(g => words.every(w => g.key.includes(w))) : guests;
-    list.innerHTML = '';
-    if(!matches.length){
-      const li = document.createElement('li');
-      li.className = 'empty'; li.textContent = 'Sin coincidencias. Prueba con tu apellido.';
-      list.appendChild(li); return;
-    }
-    matches.forEach((g,i) => {
-      const li = document.createElement('li');
-      li.id = 'g-'+i; li.setAttribute('role','option'); li.textContent = g.name;
-      li.setAttribute('aria-selected', chosen === g);
-      if(i === active) li.classList.add('active');
-      li.addEventListener('click', () => pick(g));
-      list.appendChild(li);
-    });
-  }
-  function open(){
-    panel.hidden = false; btn.setAttribute('aria-expanded','true');
-    input.value = ''; active = -1; render();
-    if(matchMedia('(hover:hover)').matches) input.focus({preventScroll:true}); // en celular no abre el teclado de golpe
-    const sel = list.querySelector('[aria-selected="true"]');
-    if(sel) sel.scrollIntoView({block:'nearest'});
-  }
-  function close(focusBtn){
-    panel.hidden = true; btn.setAttribute('aria-expanded','false');
-    input.removeAttribute('aria-activedescendant');
-    if(focusBtn) btn.focus();
-  }
-  function highlight(i){
-    if(!matches.length) return;
-    active = (i + matches.length) % matches.length;
-    list.querySelectorAll('[role=option]').forEach((li,j)=>li.classList.toggle('active', j===active));
-    const el = document.getElementById('g-'+active);
-    if(el){ el.scrollIntoView({block:'nearest'}); input.setAttribute('aria-activedescendant', el.id); }
-  }
-  function pick(g){
-    chosen = g;
-    val.textContent = g.name; val.className = '';
-    close(false);
-    hint.className = 'hint';
-    hint.textContent = g.open
-      ? 'Tu invitación tiene lugares abiertos.'
-      : `Tu invitación es para ${g.total} ${g.total===1?'persona':'personas'}${g.kids?` (${g.adults} ${g.adults===1?'adulto':'adultos'} y ${g.kids} ${g.kids===1?'niño':'niños'})`:''}.`;
+  if(!guest){ document.getElementById('rsvp-nolink').hidden = false; return; }
+
+  box.hidden = false;
+  document.getElementById('guest-name').textContent = guest.name;
+
+  const form   = document.getElementById('rsvp');
+  const attend = document.getElementById('attend');
+  const count  = document.getElementById('count');
+  const aHint  = document.getElementById('attend-hint');
+  const cHint  = document.getElementById('count-hint');
+  const max    = guest.open ? 10 : guest.total;   // invitación abierta: hasta 10
+
+  attend.addEventListener('change', () => {
+    aHint.textContent = ''; aHint.className = 'hint';
     count.innerHTML = '';
-    count.add(new Option('Selecciona una opción',''));
-    for(let n=g.total; n>=1; n--) count.add(new Option(n===1?'1 persona':`${n} personas`, n));
-    count.add(new Option('No podremos asistir','0'));
-    count.disabled = false; cHint.textContent = '';
-    count.focus();
-  }
-
-  btn.addEventListener('click', () => panel.hidden ? open() : close(true));
-  input.addEventListener('input', () => { active = -1; render(); list.scrollTop = 0; });
-  input.addEventListener('keydown', e => {
-    if(e.key==='ArrowDown'){ e.preventDefault(); highlight(active+1); }
-    else if(e.key==='ArrowUp'){ e.preventDefault(); highlight(active-1); }
-    else if(e.key==='Enter'){ e.preventDefault(); if(matches.length) pick(matches[Math.max(active,0)]); }
-    else if(e.key==='Escape'){ e.preventDefault(); close(true); }
+    if(attend.value === 'si'){
+      count.add(new Option('Selecciona cuántos asistirán',''));
+      for(let n=1; n<=max; n++) count.add(new Option(n===1 ? '1 persona' : `${n} personas`, n));
+      if(max === 1) count.value = '1';
+      count.disabled = false;
+      cHint.className = 'hint';
+      cHint.textContent = guest.open ? '' : `Tu invitación incluye ${max} ${max===1?'lugar':'lugares'}.`;
+    }else{
+      count.add(new Option(attend.value==='no' ? 'No aplica' : 'Primero confirma si asistirás',''));
+      count.disabled = true; cHint.textContent = '';
+    }
   });
-  document.addEventListener('click', e => { if(!panel.hidden && !dd.contains(e.target)) close(false); });
-  count.addEventListener('change', () => { cHint.textContent = ''; });
+  count.addEventListener('change', () => {
+    cHint.className = 'hint';
+    cHint.textContent = guest.open ? '' : `Tu invitación incluye ${max} ${max===1?'lugar':'lugares'}.`;
+  });
 
-  const wa = text => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+  const wa  = text => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+  const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   form.addEventListener('submit', e => {
     e.preventDefault();
-    if(!chosen){
-      hint.className = 'hint err'; hint.textContent = 'Selecciona tu nombre de la lista.'; btn.focus(); return;
-    }
-    if(count.value===''){
-      cHint.className = 'hint err'; cHint.textContent = 'Elige cuántos asistirán.'; count.focus(); return;
-    }
+    if(!attend.value){ aHint.className='hint err'; aHint.textContent='Elige Sí o No.'; attend.focus(); return; }
+    const yes = attend.value === 'si';
+    if(yes && !count.value){ cHint.className='hint err'; cHint.textContent='Elige el número de invitados.'; count.focus(); return; }
+
     const n = +count.value;
-    const lines = ['🕊️ Confirmación de asistencia', EVENTO, '', `Invitado: ${chosen.name}`];
-    if(n===0) lines.push('Respuesta: No podremos asistir');
-    else lines.push(`Asistirán: ${n} ${n===1?'persona':'personas'}` + (chosen.open ? ' (invitación abierta)' : ` de ${chosen.total}`));
+    const lines = ['🕊️ Confirmación de asistencia', EVENTO, '', `Invitado: ${guest.name}`, `¿Asistirá?: ${yes ? 'Sí' : 'No'}`];
+    if(yes) lines.push(`Número de invitados: ${n}` + (guest.open ? '' : ` de ${max}`));
     const url = wa(lines.join('\n'));
     window.open(url, '_blank', 'noopener');
 
-    const first = chosen.name.split(' ')[0];
+    const first = esc(guest.name.split(' ')[0]);
     const done = document.createElement('div');
     done.className = 'done'; done.setAttribute('role','status');
-    done.innerHTML = n===0
-      ? `<p>Gracias por avisarnos, ${esc(first)}. Te vamos a extrañar.</p>`
-      : `<p>¡Gracias, ${esc(first)}! Nos dará mucho gusto verte.</p>`;
-    done.innerHTML += `<p>Se abrió WhatsApp con tu confirmación; solo presiona enviar. Si no se abrió, <a href="${url}" target="_blank" rel="noopener">toca aquí</a>.</p>`;
+    done.innerHTML = (yes
+      ? `<p>¡Gracias, ${first}! Nos dará mucho gusto verte.</p>`
+      : `<p>Gracias por avisarnos, ${first}. Te vamos a extrañar.</p>`)
+      + `<p>Se abrió WhatsApp con tu confirmación; solo presiona enviar. Si no se abrió, <a href="${url}" target="_blank" rel="noopener">toca aquí</a>.</p>`;
     form.replaceWith(done);
   });
-
-  document.getElementById('not-found').addEventListener('click', () => {
-    window.open(wa(`Hola, quiero confirmar mi asistencia al ${EVENTO}, pero no encontré mi nombre en la lista.`), '_blank', 'noopener');
-  });
-
-  function esc(s){ return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 })();
 </script>
 </body>
