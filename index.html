@@ -145,6 +145,7 @@ body::before{
 .pass{margin-top:36px}
 .pass-msg{font-family:var(--script);font-size:1.9rem;line-height:1.15;color:var(--taupe);text-wrap:balance}
 .pass-name{font-size:1.55rem;line-height:1.3;color:var(--ink);margin-top:10px;text-wrap:balance}
+.pase[hidden],.field[hidden]{display:none}
 .pase{
   display:inline-flex;flex-direction:column;align-items:center;
   margin:20px auto 0;padding:16px 36px 13px;border-radius:999px 999px 14px 14px;
@@ -296,7 +297,7 @@ body::before{
           <p class="hint" id="attend-hint" aria-live="polite"></p>
         </div>
 
-        <div class="field">
+        <div class="field" id="count-field">
           <label for="count">Número de invitados</label>
           <div class="sel-wrap">
             <select id="count" disabled>
@@ -323,7 +324,7 @@ body::before{
 
 <script>
 /* ── Configuración ── */
-const WHATSAPP     = '527227026740';   // 722 702 6740
+const WHATSAPP     = '527122944486';   // 712 294 4486
 const EVENTO       = 'Bautizo de Emilio Aurelio · 6 de noviembre de 2026';
 const MAX_SIN_PASE = 10;               // opciones si se abre la invitación sin pase personal
 
@@ -350,9 +351,13 @@ if(guest){
   document.getElementById('pass').hidden = false;
   document.getElementById('rsvp-wrap').hidden = false;
   document.getElementById('pass-name').textContent = guest.name;
-  document.getElementById('pase-num').textContent = guest.open ? '∞' : guest.seats;
-  document.getElementById('pase-txt').textContent =
-    guest.open ? 'LUGARES ABIERTOS' : (guest.seats===1 ? 'LUGAR RESERVADO' : 'LUGARES RESERVADOS');
+  if(guest.open){
+    document.querySelector('.pase').hidden = true;          // invitación abierta: sin número
+    document.getElementById('count-field').hidden = true;
+  }else{
+    document.getElementById('pase-num').textContent = guest.seats;
+    document.getElementById('pase-txt').textContent = guest.seats===1 ? 'LUGAR RESERVADO' : 'LUGARES RESERVADOS';
+  }
   document.title = `${guest.name} · Bautizo de Emilio Aurelio`;
 }
 
@@ -387,12 +392,12 @@ if(guest){
     e.preventDefault();
     if(!attend.value){ aHint.className='hint err'; aHint.textContent='Elige Sí o No.'; attend.focus(); return; }
     const yes = attend.value === 'si';
-    if(yes && !count.value){ cHint.className='hint err'; cHint.textContent='Elige el número de invitados.'; count.focus(); return; }
+    if(yes && !guest.open && !count.value){ cHint.className='hint err'; cHint.textContent='Elige el número de invitados.'; count.focus(); return; }
 
-    const lines = ['Confirmación de asistencia', EVENTO, ''];
+    const lines = ['🕊️ Confirmación de asistencia', EVENTO, ''];
     if(guest) lines.push(`Invitado: ${guest.name}`);
     lines.push(`¿Asistirá?: ${yes ? 'Sí' : 'No'}`);
-    if(yes) lines.push(`Número de invitados: ${count.value}` + (limited ? ` de ${max}` : ''));
+    if(yes && !guest.open) lines.push(`Número de invitados: ${count.value} de ${max}`);
     const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join('\n'))}`;
     window.open(url, '_blank', 'noopener');
 
